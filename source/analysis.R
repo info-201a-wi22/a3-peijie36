@@ -20,10 +20,9 @@ incarceration_trends <- read.csv(file, header = TRUE, stringsAsFactors = FALSE)
 total_prison_pop_by_year <- incarceration_trends %>%
    filter(year >= 1990, year <= 2016) %>%
    group_by(year) %>%
-   summarize(total_prison_population = sum(total_prison_pop, na.rm = TRUE)) 
-## View(total_prison_pop_by_year)
+   summarize(total_prison_population = sum(total_prison_pop, na.rm = TRUE))
 
-### Percentage of black people in prison each year 
+### Percentage of black people in prison each year
 percentage_black_jail_pop <- incarceration_trends %>%
    filter(year >= 1990, year <= 2016) %>%
    group_by(year) %>%
@@ -33,7 +32,7 @@ percentage_black_jail_pop <- incarceration_trends %>%
 
 avg_black_percentage <- mean(percentage_black_jail_pop$percentage)
 
-### Percentage of white people in prison each year 
+### Percentage of white people in prison each year
 percentage_white_jail_pop <- incarceration_trends %>%
    filter(year >= 1990, year <= 2016) %>%
    group_by(year) %>%
@@ -48,14 +47,13 @@ highest_black_prison_pop_county <- incarceration_trends %>%
    filter(year >= 1990, year <= 2016) %>%
    group_by(county_name) %>%
    summarize(total_black_prison_pop = sum(black_prison_pop, na.rm = TRUE))
-View(highest_black_prison_pop_county)
 
 ### County where prison population of white people is highest
 highest_white_prison_pop_county <- incarceration_trends %>%
    filter(year >= 1990, year <= 2016) %>%
    group_by(county_name) %>%
    summarize(total_white_prison_pop = sum(white_prison_pop, na.rm = TRUE))
-View(highest_white_prison_pop_county)
+
 
    
 ## Trends of jail population over time (categorized by race) ----
@@ -75,7 +73,7 @@ total_jail_pop_by_race <- gather(
    -year
 )
 
-## Trends over time chart
+##$ Trends over time chart
 prison_pop_trend <- ggplot(total_jail_pop_by_race) +
    geom_point(mapping = aes(x = year, y = population, color = Race)) +
    scale_x_continuous(breaks = seq(1990, 2016, 5)) +
@@ -99,7 +97,7 @@ black_white_prison_comparison <- gather(
    -year
 )
 
-## Comparison chart
+### Comparison chart
 black_white_prison_percentage <- ggplot(black_white_prison_comparison) +
    geom_line(mapping = aes(x = year, y = percentage, color = Race)) +
    scale_x_continuous(breaks = seq(1990, 2016, 5)) +
@@ -139,9 +137,8 @@ black_prison_pop_map <- ggplot(map_data) +
    geom_polygon(mapping = aes(x = long, y = lat, group = group, fill = black_prison_pop),
                 color = "gray", size = 0.3) +
    coord_map() +
-   scale_fill_continuous(name = "# of Black people in prison", 
+   scale_fill_continuous(name = "# of Black people in prison",
                          limits = c(0, max(map_data$black_prison_pop)), na.value = "white", low = "green", high = "red") +
    blank_theme +
    ggtitle("Black Prison Population in 2016 Across Each County")
-black_prison_pop_map   
-   
+black_prison_pop_map
