@@ -20,7 +20,7 @@ First off, to get an overview of the prison system, I computed the total populat
 ```{r, echo = FALSE}
 plot(prison_pop_trend)
 ```
-<br /> This chart illustrates the trend of the prison population between different groups of people from 1990 to 2016. I decided to create this chart because it is important to incorporate groups other than black and white people in the narrative to better understand the prison system. From this chart, black, white, and Latinx people are the major groups targeted for incarceration. The prison population for these groups of people is increasing over the years. This supports the fact that our prison system does not address the issue of criminal justice because we would expect the numbers to go down.
+<br /> This is a time trend chart that illustrates the trend of the prison population between different groups of people from 1990 to 2016. I decided to create this chart because it is important to incorporate groups other than black and white people in the narrative to better understand the prison system. From this chart, black, white, and Latinx people are the major groups targeted for incarceration. The prison population for these groups of people is increasing over the years. This supports the fact that our prison system does not address the issue of criminal justice because we would expect the numbers to go down.
 
 ## Comparison Chart
 ```{r, echo = FALSE}
